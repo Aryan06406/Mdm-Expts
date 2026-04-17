@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>API Search Filter</title>
+<style>
+body {
+font-family: Arial;
+background: #f4f4f4;
+}
+input {
+width: 300px;
+padding: 10px;
+margin: 20px;
+
+49
+
+}
+.card {
+background: white;
+padding: 15px;
+margin: 10px;
+border-radius: 5px;
+}
+</style>
+</head>
+<body>
+
+<h2 align=&quot;center&quot;>Search API Data</h2>
+<center>
+<input type=&quot;text&quot; id=&quot;search&quot; placeholder=&quot;Search by title...&quot;>
+</center>
+
+<div id=&quot;results&quot;></div>
+
+<script>
+let apiData = [];
+
+fetch(&quot;https://jsonplaceholder.typicode.com/posts&quot;)
+.then(response => response.json())
+.then(data => {
+apiData = data;
+displayData(apiData);
+
+50
+
+});
+
+function displayData(data) {
+const resultDiv = document.getElementById(&quot;results&quot;);
+resultDiv.innerHTML = &quot;&quot;;
+
+data.forEach(item => {
+resultDiv.innerHTML += `
+<div class=&quot;card&quot;>
+<h4>${item.title}</h4>
+<p>${item.body}</p>
+</div>
+`;
+});
+}
+
+document.getElementById(&quot;search&quot;).addEventListener(&quot;keyup&quot;, function() {
+const keyword = this.value.toLowerCase();
+const filteredData = apiData.filter(item =>
+item.title.toLowerCase().includes(keyword)
+);
+displayData(filteredData);
+});
+</script>
+
+</body>
+
+51
+
+</html>
