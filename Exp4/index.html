@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic Webpage with DOM & jQuery</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        #contentBox {
+            width: 300px;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border: 2px solid #2196f3;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        button {
+            margin: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dynamic Webpage using JavaScript DOM & jQuery</h2>
+
+    <!-- DOM Content -->
+    <p id="text">Click the button to change this text.</p>
+
+    <!-- DOM Button -->
+    <button onclick="changeText()">Change Text (DOM)</button>
+
+    <hr>
+
+    <!-- jQuery Buttons -->
+    <button id="hideBtn">Hide</button>
+    <button id="showBtn">Show</button>
+    <button id="toggleBtn">Toggle</button>
+    <button id="animateBtn">Animate</button>
+
+    <!-- Box for jQuery effects -->
+    <div id="contentBox">
+        This box will be hidden, shown, toggled, and animated.
+    </div>
+
+    <script>
+        /* ---------------------------
+           JavaScript DOM Manipulation
+        ---------------------------- */
+        function changeText() {
+            document.getElementById("text").innerHTML =
+                "Text updated dynamically using JavaScript DOM!";
+        }
+
+        /* ---------------------------
+           jQuery Effects
+        ---------------------------- */
+        $(document).ready(function () {
+
+            $("#hideBtn").click(function () {
+                $("#contentBox").hide(500);
+            });
+
+            $("#showBtn").click(function () {
+                $("#contentBox").show(500);
+            });
+
+            $("#toggleBtn").click(function () {
+                $("#contentBox").toggle(500);
+            });
+
+            $("#animateBtn").click(function () {
+                $("#contentBox").animate({
+                    left: "100px",
+                    width: "350px",
+                    opacity: 0.7
+                }, 800);
+            });
+
+        });
+    </script>
+
+</body>
+</html>
