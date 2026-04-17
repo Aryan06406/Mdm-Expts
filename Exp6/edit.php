@@ -1,6 +1,6 @@
-&lt;?php
-include &quot;db.php&quot;;
-$id = $_GET[&#39;id&#39;];
+<?php
+include "db.php";
+$id = $_GET['id'];
 
 36
 
@@ -13,9 +13,9 @@ header(&quot;Location: index.php&quot;);
 }
 
 $data = mysqli_fetch_assoc(mysqli_query($conn, &quot;SELECT * FROM users WHERE id=$id&quot;));
-?&gt;
-&lt;form method=&quot;post&quot;&gt;
-&lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;&lt;?= $data[&#39;name&#39;]; ?&gt;&quot;&gt;
-&lt;input type=&quot;email&quot; name=&quot;email&quot; value=&quot;&lt;?= $data[&#39;email&#39;]; ?&gt;&quot;&gt;
-&lt;button name=&quot;update&quot;&gt;Update&lt;/button&gt;
-&lt;/form&gt;
+?>
+<form method=&quot;post&quot;>
+<input type=&quot;text&quot; name=&quot;name&quot; value=&quot;<?= $data[&#39;name&#39;]; ?>&quot;>
+<input type=&quot;email&quot; name=&quot;email&quot; value=&quot;<?= $data[&#39;email&#39;]; ?>&quot;>
+<button name=&quot;update&quot;>Update</button>
+</form>
