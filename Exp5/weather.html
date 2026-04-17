@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Weather App</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #weatherBox {
+            margin-top: 20px;
+            padding: 20px;
+            display: inline-block;
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            background-color: #ecf6fd;
+            min-width: 250px;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🌍 Real-Time Weather App</h2>
+
+    <input type="text" id="city" placeholder="Enter City Name">
+    <button id="getWeather">Get Weather</button>
+
+    <div id="weatherBox" style="display:none;">
+        <h3 id="cityName"></h3>
+        <p><strong>Temperature:</strong> <span id="temp"></span> °C</p>
+        <p><strong>Humidity:</strong> <span id="humidity"></span> %</p>
+        <p><strong>Condition:</strong> <span id="condition"></span></p>
+    </div>
+
+    <script>
+        $("#getWeather").click(function() {
+
+            var city = $("#city").val();
+            var apiKey = "75542b7bd9f0dd736a0247a1611ebbbb";
+            var url = "https://api.openweathermap.org/data/2.5/weather?q=" 
+                      + city + 
+                      "&appid=" + apiKey + 
+                      "&units=metric";
+
+            // AJAX Request
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function(data) {
+                    $("#cityName").text(data.name);
+                    $("#temp").text(data.main.temp);
+                    $("#humidity").text(data.main.humidity);
+                    $("#condition").text(data.weather[0].description);
+
+                    $("#weatherBox").fadeIn();
+                },
+                error: function() {
+                    alert("City not found! Please try again.");
+                }
+            });
+
+        });
+    </script>
+
+</body>
+</html>
