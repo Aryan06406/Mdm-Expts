@@ -1,9 +1,9 @@
-<?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>
+<?xml version="1.0" encoding="UTF-8"?>
 
-<xsl:stylesheet version=&quot;1.0&quot;
-xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;>
+<xsl:stylesheet version="1.0"
+xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
-<xsl:template match=&quot;/&quot;>
+<xsl:template match="/">
 <html>
 <head>
 <title>Book Details</title>
@@ -27,20 +27,20 @@ background-color: #dddddd;
 </head>
 
 <body>
-<h2 align=&quot;center&quot;>Book Information</h2>
+<h2 align="center">Book Information</h2>
 
-<table align=&quot;center&quot;>
+<table align="center">
 <tr>
 <th>Title</th>
 <th>Author</th>
 <th>Price</th>
 </tr>
 
-<xsl:for-each select=&quot;books/book&quot;>
+<xsl:for-each select="books/book">
 <tr>
-<td><xsl:value-of select=&quot;title&quot;/></td>
-<td><xsl:value-of select=&quot;author&quot;/></td>
-<td><xsl:value-of select=&quot;price&quot;/></td>
+<td><xsl:value-of select="title"/></td>
+<td><xsl:value-of select="author"/></td>
+<td><xsl:value-of select="price"/></td>
 
 42
 
